@@ -62,3 +62,13 @@ The project includes REST controller testing using `@WebMvcTest` and `MockMvc`.
 * `src/main/java/org/mymovieapp/service`: Contains the business logic and orchestration.
 * `src/main/java/org/mymovieapp/dto`: Data Transfer Objects for secure and clean data communication.
 * `src/main/resources/templates`: Thymeleaf templates for the front-end.
+
+## 🤖 Continuous Integration (CI)
+
+This project uses **GitHub Actions** to ensure code quality and build stability.
+
+* **Automated Builds:** Every push to the `main` branch triggers an automated build using Maven and JDK 25.
+* **Automated Testing:** All JUnit tests are executed in a clean Ubuntu environment to catch regressions early.
+* **Artifact Generation:** Upon a successful build, a runnable JAR file is created as a build artifact.
+
+![Java CI with Maven](https://github.com/johanbriger/movieApp/actions/workflows/maven.yml/badge.svg)
