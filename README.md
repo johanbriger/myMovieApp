@@ -78,4 +78,3 @@ This project uses **GitHub Actions** to ensure code quality:
 * **Artifacts:** A runnable JAR file is created upon successful builds.
 
 ---
-*This project was created for educational purposes.*
