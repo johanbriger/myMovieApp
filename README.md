@@ -1,6 +1,8 @@
 
 # myMovieApp - Spring Boot Study Project
 
+![Java CI with Maven](https://github.com/johanbriger/movieApp/actions/workflows/maven.yml/badge.svg)
+
 A robust web application for managing a movie library, developed as a student assignment focusing on the Spring Boot framework. The application enables users to list, search, add, edit, and delete movies through a clean web interface.
 
 ## 🚀 Features
@@ -13,8 +15,8 @@ A robust web application for managing a movie library, developed as a student as
 
 ## 🛠 Tech Stack
 
-* **Java:** 25 
-* **Framework:** Spring Boot 3.4.3
+* **Java:** 25
+* **Framework:** Spring Boot 4.0.3
 * **Web:** Spring MVC & Thymeleaf (Template Engine)
 * **Data:** Spring Data JPA
 * **Database:** H2 Database (In-memory)
@@ -36,7 +38,7 @@ To run this project, you will need:
     * Ensure your Project SDK is set to **Java 25**.
 
 3. **Load Maven Project:**
-    * Right-click on `pom.xml` and select **Maven > Reload Project** to ensure all dependencies (including test libraries) are indexed.
+    * Right-click on `pom.xml` and select **Maven > Reload Project** to ensure all dependencies are indexed.
 
 4. **Run the application:**
     * Find the main class `MyMovieAppApplication.java` in `src/main/java/org/mymovieapp/`.
@@ -45,35 +47,35 @@ To run this project, you will need:
 5. **Access the web interface:**
     * Open your browser and go to: `http://localhost:8080/movies`
 
-## 🧪 Testing
+## 🍿 Sample Data & Development Tools
 
-The project includes REST controller testing using `@WebMvcTest` and `MockMvc`.
-* To run tests: Right-click the `src/test/java` folder and select **Run 'All Tests'**.
-* Note: This project uses `@MockitoBean` (available in Spring Boot 3.4+) for service mocking.
+The application is pre-configured with a `DataInitializer` that automatically populates the H2 database with a few classic movies upon startup, allowing for immediate testing of search and pagination.
 
-
-**H2 Console**
+### H2 Database Console
+You can inspect the in-memory database at any time:
 * **URL:** `http://localhost:8080/h2-console`
 * **JDBC URL:** `jdbc:h2:mem:testdb`
 * **User:** `sa` (No password)
 
-## 🍿 Sample Data
-The application is pre-configured with a `DataInitializer` that automatically populates the H2 database with a few classic movies upon startup, so you can test the search and pagination features immediately.
+## 🧪 Testing
+
+The project includes REST controller testing using `@WebMvcTest` and `MockMvc`.
+* **To run tests:** Right-click the `src/test/java` folder in IntelliJ and select **Run 'All Tests'**.
+* **Note:** This project uses `@MockitoBean` (available in Spring Boot 3.4+) for modern service mocking.
 
 ## 📁 Project Structure
 
 * `src/main/java/org/mymovieapp/controller`: Handles HTTP requests and UI interaction.
 * `src/main/java/org/mymovieapp/service`: Contains the business logic and orchestration.
-* `src/main/java/org/mymovieapp/dto`: Data Transfer Objects for secure and clean data communication.
+* `src/main/java/org/mymovieapp/dto`: Data Transfer Objects for secure data communication.
 * `src/main/resources/templates`: Thymeleaf templates for the front-end.
 
 ## 🤖 Continuous Integration (CI)
 
-This project uses **GitHub Actions** to ensure code quality and build stability.
+This project uses **GitHub Actions** to ensure code quality:
+* **Automated Builds:** Every push to the `main` branch triggers a build using Maven and JDK 25.
+* **Automated Testing:** All JUnit tests are executed in a clean Ubuntu environment.
+* **Artifacts:** A runnable JAR file is created upon successful builds.
 
-* **Automated Builds:** Every push to the `main` branch triggers an automated build using Maven and JDK 25.
-* **Automated Testing:** All JUnit tests are executed in a clean Ubuntu environment to catch regressions early.
-* **Artifact Generation:** Upon a successful build, a runnable JAR file is created as a build artifact.
-
-![Java CI with Maven](https://github.com/johanbriger/movieApp/actions/workflows/maven.yml/badge.svg)
-
+---
+*This project was created for educational purposes.*
