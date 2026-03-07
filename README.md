@@ -72,3 +72,4 @@ This project uses **GitHub Actions** to ensure code quality and build stability.
 * **Artifact Generation:** Upon a successful build, a runnable JAR file is created as a build artifact.
 
 ![Java CI with Maven](https://github.com/johanbriger/movieApp/actions/workflows/maven.yml/badge.svg)
+
