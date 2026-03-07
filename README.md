@@ -1,4 +1,3 @@
-![Java CI with Maven](https://github.com/johanbriger/movieApp/actions/workflows/maven.yml/badge.svg)
 
 # myMovieApp - Spring Boot Study Project
 
@@ -57,6 +56,9 @@ The project includes REST controller testing using `@WebMvcTest` and `MockMvc`.
 * **URL:** `http://localhost:8080/h2-console`
 * **JDBC URL:** `jdbc:h2:mem:testdb`
 * **User:** `sa` (No password)
+
+## 🍿 Sample Data
+The application is pre-configured with a `DataInitializer` that automatically populates the H2 database with a few classic movies upon startup, so you can test the search and pagination features immediately.
 
 ## 📁 Project Structure
 
