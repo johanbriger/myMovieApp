@@ -38,7 +38,7 @@ To run this project, you will need:
     * Right-click on `pom.xml` and select **Maven > Reload Project** to ensure all dependencies (including test libraries) are indexed.
 
 4. **Run the application:**
-    * Find the main class `MovieAppApplication.java` in `src/main/java/org/movieapp/`.
+    * Find the main class `MyMovieAppApplication.java` in `src/main/java/org/mymovieapp/`.
     * Click the **green play button**.
 
 5. **Access the web interface:**
