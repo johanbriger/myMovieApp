@@ -29,7 +29,6 @@ public class MovieController {
             @RequestParam(defaultValue = "10") int size,
             Model model) {
 
-        // Pagination logic (VG)
         Page<MovieDTO> moviePage = service.findAll(search, PageRequest.of(page, size, Sort.by("title")));
 
         model.addAttribute("movies", moviePage.getContent());
@@ -60,7 +59,6 @@ public class MovieController {
     public String showUpdateForm(@PathVariable Long id, Model model) {
         MovieDTO existing = service.findById(id);
 
-        // Vi måste mappa om till UpdateDTO för formuläret
         UpdateMovieDTO formDto = new UpdateMovieDTO();
         formDto.setTitle(existing.getTitle());
         formDto.setDescription(existing.getDescription());

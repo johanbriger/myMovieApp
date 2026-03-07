@@ -23,7 +23,6 @@ public class Movie {
     @NotNull(message = "Utgivningsdatum måste anges")
     private LocalDate releaseDate;
 
-    // Domänspecifika attribut
     @NotBlank(message = "Regissör måste anges")
     private String director;
 

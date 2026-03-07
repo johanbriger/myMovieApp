@@ -71,5 +71,6 @@ public class MovieDTO {
     public void setDurationMinutes(Integer durationMinutes) {
         this.durationMinutes = durationMinutes;
     }
+
 }
 

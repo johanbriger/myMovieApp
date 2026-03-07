@@ -69,5 +69,6 @@ public class UpdateMovieDTO {
     public void setDurationMinutes(Integer durationMinutes) {
         this.durationMinutes = durationMinutes;
     }
+
 }
 
