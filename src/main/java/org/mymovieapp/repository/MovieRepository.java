@@ -1,6 +1,6 @@
 package org.mymovieapp.repository;
 
-import org.mymovieapp.domain.Movie;
+import org.mymovieapp.entity.Movie;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,11 +1,10 @@
 package org.mymovieapp.config;
 
-
-
 import org.mymovieapp.dto.CreateMovieDTO;
 import org.mymovieapp.service.MovieService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.PageRequest;
 
 import java.time.LocalDate;
 
@@ -22,7 +21,7 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Kontrollera om databasen är tom innan vi lägger till dummys
-        if (movieService.findAll("", org.springframework.data.domain.PageRequest.ofSize(10)).getTotalElements() == 0) {
+        if (movieService.findAll("", PageRequest.ofSize(10)).getTotalElements() == 0) {
 
             // Skapa film 1: Inception
             CreateMovieDTO movie1 = new CreateMovieDTO();

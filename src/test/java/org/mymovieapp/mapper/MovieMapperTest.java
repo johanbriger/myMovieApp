@@ -2,7 +2,7 @@ package org.mymovieapp.mapper;
 
 
 
-import org.mymovieapp.domain.Movie;
+import org.mymovieapp.entity.Movie;
 import org.mymovieapp.dto.CreateMovieDTO;
 import org.mymovieapp.dto.MovieDTO;
 import org.junit.jupiter.api.Test;

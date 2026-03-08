@@ -1,7 +1,7 @@
 package org.mymovieapp.service;
 
 
-import org.mymovieapp.domain.Movie;
+import org.mymovieapp.entity.Movie;
 import org.mymovieapp.dto.*;
 import org.mymovieapp.mapper.MovieMapper;
 import org.mymovieapp.repository.MovieRepository;

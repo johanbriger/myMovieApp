@@ -1,4 +1,4 @@
-package org.mymovieapp.domain;
+package org.mymovieapp.entity;
 
 
 import jakarta.persistence.*;
