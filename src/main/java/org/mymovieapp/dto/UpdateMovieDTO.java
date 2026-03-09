@@ -1,6 +1,8 @@
 package org.mymovieapp.dto;
 
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 
@@ -11,6 +13,7 @@ public class UpdateMovieDTO {
     private String description;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
 
     @NotBlank
