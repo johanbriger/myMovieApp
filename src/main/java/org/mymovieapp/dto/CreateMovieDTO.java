@@ -19,6 +19,7 @@ public class CreateMovieDTO {
     @NotBlank(message = "Regissör saknas")
     private String director;
 
+    @NotNull(message = "Längd saknas")
     @Min(1)
     private Integer durationMinutes;
 

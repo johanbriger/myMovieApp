@@ -14,6 +14,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleResourceNotFound(ResourceNotFoundException ex, Model model) {
         model.addAttribute("error", ex.getMessage());
-        return "error/404";
+        return "movie/404";
     }
 }

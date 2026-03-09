@@ -34,7 +34,9 @@
 
     <div class="mb-3">
         <label>Längd (min)</label>
-        <input type="number" th:field="*{durationMinutes}" class="form-control">
+        <input type="number" th:field="*{durationMinutes}" class="form-control"
+               th:classappend="${#fields.hasErrors('durationMinutes')} ? 'is-invalid'">
+        <div class="invalid-feedback" th:errors="*{durationMinutes}"></div>
     </div>
 
     <div class="mb-3">
