@@ -1,7 +1,7 @@
 
 # myMovieApp - Spring Boot Study Project
 
-![Java CI with Maven](https://github.com/johanbriger/movieApp/actions/workflows/maven.yml/badge.svg)
+![Java CI with Maven](https://github.com/johanbriger/myMovieApp/actions/workflows/maven.yml/badge.svg)
 
 A robust web application for managing a movie library, developed as a student assignment focusing on the Spring Boot framework. The application enables users to list, search, add, edit, and delete movies through a clean web interface.
 
