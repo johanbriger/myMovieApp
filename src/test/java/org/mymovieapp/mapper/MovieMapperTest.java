@@ -1,5 +1,6 @@
 package org.mymovieapp.mapper;
 
+import org.mymovieapp.dto.UpdateMovieDTO;
 import org.mymovieapp.entity.Movie;
 import org.mymovieapp.dto.CreateMovieDTO;
 import org.mymovieapp.dto.MovieDTO;
@@ -26,7 +27,7 @@ class MovieMapperTest {
         // Assert
         assertEquals(dto.getTitle(), movie.getTitle());
         assertEquals(dto.getDirector(), movie.getDirector());
-        assertNull(movie.getId()); // ID ska vara null innan det sparas i DB
+        assertNull(movie.getId());
     }
 
     @Test
@@ -40,5 +41,22 @@ class MovieMapperTest {
         // Assert
         assertEquals(movie.getId(), dto.getId());
         assertEquals(movie.getTitle(), dto.getTitle());
+    }
+
+    @Test
+    void shouldUpdateExistingEntityFromUpdateDTO() {
+        // Arrange
+        Movie existingMovie = new Movie(10L, "Old Title", "Old Desc", LocalDate.now(), "Old Director", 100);
+        UpdateMovieDTO updateDto = new UpdateMovieDTO();
+        updateDto.setTitle("New Title");
+        updateDto.setDirector("New Director");
+
+        // Act
+        mapper.updateEntityFromDTO(updateDto, existingMovie);
+
+        // Assert
+        assertEquals("New Title", existingMovie.getTitle());
+        assertEquals("New Director", existingMovie.getDirector());
+        assertEquals(10L, existingMovie.getId()); // ID får absolut inte ändras!
     }
 }
