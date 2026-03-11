@@ -10,71 +10,70 @@ A robust web application for managing a movie library, developed as a student as
 * **Movie Management (CRUD):** Full support for Creating, Reading, Updating, and Deleting movies.
 * **Search Functionality:** Filter the movie list using search strings to find specific titles.
 * **Pagination & Sorting:** Efficient handling of datasets using `Pageable` for pagination and automatic sorting by title.
-* **Form Validation:** Uses `spring-boot-starter-validation` to ensure data integrity (e.g., mandatory fields, date formats).
-* **DTO Pattern:** Implements Data Transfer Objects (`MovieDTO`, `CreateMovieDTO`, `UpdateMovieDTO`) to decouple database entities from the presentation layer.
+* **Form Validation:** Uses `spring-boot-starter-validation` to ensure data integrity.
+* **Database Migrations:** Implements **Flyway** for version-controlled database schema management.
+* **Containerized Database:** Uses **Docker Compose** to manage a persistent PostgreSQL database.
 
 ## 🛠 Tech Stack
 
 * **Java:** 25
 * **Framework:** Spring Boot 4.0.3
 * **Web:** Spring MVC & Thymeleaf (Template Engine)
-* **Data:** Spring Data JPA
-* **Database:** H2 Database (In-memory)
-* **Tools:** Maven, Mockito, MockMvc
+* **Data:** Spring Data JPA & Flyway
+* **Database:** **PostgreSQL 15 (via Docker)**
+* **Tools:** Maven, Docker, Mockito
 
 ## 📋 Prerequisites
 
 To run this project, you will need:
 * **JDK 25** installed on your system.
+* **Docker & Docker Compose** installed and running.
 * **Maven 3.9.x** or later.
-* **IntelliJ IDEA** (Recommended).
 
-## 🏃 Getting Started (IntelliJ IDEA)
+## 🏃 Getting Started
 
-1. **Clone or Open the project:**
-    * Open IntelliJ IDEA and select **File > Open...** and select the project folder.
+### 1. Start the Database (Docker)
+The application requires a PostgreSQL database. Start it using the provided Docker Compose file:
+```bash
+docker-compose up -d
+```
 
-2. **Configure Java Version:**
-    * Ensure your Project SDK is set to **Java 25**.
+This will start a Postgres container in the background and map it to port 5432.
 
-3. **Load Maven Project:**
-    * Right-click on `pom.xml` and select **Maven > Reload Project** to ensure all dependencies are indexed.
+### 2. Run the Application
+You can run the app via IntelliJ or the terminal:
 
-4. **Run the application:**
-    * Find the main class `MyMovieAppApplication.java` in `src/main/java/org/mymovieapp/`.
-    * Click the **green play button**.
+**Via IntelliJ:**
+* Open the project and ensure Project SDK is set to **Java 25**.
+* Run `MyMovieAppApplication.java`.
 
-5. **Access the web interface:**
-    * Open your browser and go to: `http://localhost:8080/movies`
+**Via Terminal:**
+```bash
+mvn spring-boot:run
+```
+### 3. Access the web interface
+Open your browser and go to:
 
-## 🍿 Sample Data & Development Tools
+* **Main Application:** [http://localhost:8080/movies](http://localhost:8080/movies)
 
-The application is pre-configured with a `DataInitializer` that automatically populates the H2 database with a few classic movies upon startup, allowing for immediate testing of search and pagination.
-
-### H2 Database Console
-You can inspect the in-memory database at any time:
-* **URL:** `http://localhost:8080/h2-console`
-* **JDBC URL:** `jdbc:h2:mem:testdb`
-* **User:** `sa` (No password)
+## 🍿 Sample Data & Migrations
+* **Flyway:** On startup, Flyway automatically runs all migration scripts found in `src/main/resources/db/migration` to set up your tables.
+* **DataInitializer:** The application is pre-configured with a `DataInitializer` that populates the database with sample movies (Inception, The Matrix, Interstellar) if the database is empty.
 
 ## 🧪 Testing
-
 The project includes REST controller testing using `@WebMvcTest` and `MockMvc`.
-* **To run tests:** Right-click the `src/test/java` folder in IntelliJ and select **Run 'All Tests'**.
+
+* **To run tests:** `mvn test`
 * **Note:** This project uses `@MockitoBean` (available in Spring Boot 3.4+) for modern service mocking.
 
 ## 📁 Project Structure
-
 * `src/main/java/org/mymovieapp/controller`: Handles HTTP requests and UI interaction.
 * `src/main/java/org/mymovieapp/service`: Contains the business logic and orchestration.
-* `src/main/java/org/mymovieapp/dto`: Data Transfer Objects for secure data communication.
-* `src/main/resources/templates`: Thymeleaf templates for the front-end.
+* `src/main/resources/db/migration`: SQL scripts for database versioning.
+* `docker-compose.yml`: Configuration for the PostgreSQL container.
 
 ## 🤖 Continuous Integration (CI)
-
 This project uses **GitHub Actions** to ensure code quality:
-* **Automated Builds:** Every push to the `main` branch triggers a build using Maven and JDK 25.
-* **Automated Testing:** All JUnit tests are executed in a clean Ubuntu environment.
-* **Artifacts:** A runnable JAR file is created upon successful builds.
 
----
+* **Automated Builds:** Every push to the `main` branch triggers a build using Maven and JDK 25.
+* **Automated Testing:** All JUnit tests are executed in a clean environment.
