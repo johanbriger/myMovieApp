@@ -5,7 +5,7 @@
 
 A robust web application for managing a movie library, developed as a student assignment focusing on the Spring Boot framework. The application enables users to list, search, add, edit, and delete movies through a clean web interface.
 
-## ⚖️ Requirements Coverage(Laboration 1)
+## ⚖️ Requirements(Laboration 1)
 
 ### Core Features 
 * **CRUD:** Full support for Movies.
@@ -24,14 +24,6 @@ A robust web application for managing a movie library, developed as a student as
 * **Mapper Tests:** Unit tests for Entity-DTO conversion.
 * **Web Tests:** `MockMvc` tests for controllers and view resolution.
 
-## 🚀 Features
-
-* **Movie Management (CRUD):** Full support for Creating, Reading, Updating, and Deleting movies.
-* **Search Functionality:** Filter the movie list using search strings to find specific titles.
-* **Pagination & Sorting:** Efficient handling of datasets using `Pageable` for pagination and automatic sorting by title.
-* **Form Validation:** Uses `spring-boot-starter-validation` to ensure data integrity.
-* **Database Migrations:** Implements **Flyway** for version-controlled database schema management.
-* **Containerized Database:** Uses **Docker Compose** to manage a persistent PostgreSQL database.
 
 ## 🛠 Tech Stack
 
