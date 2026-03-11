@@ -5,6 +5,25 @@
 
 A robust web application for managing a movie library, developed as a student assignment focusing on the Spring Boot framework. The application enables users to list, search, add, edit, and delete movies through a clean web interface.
 
+## ⚖️ Requirements Coverage(Laboration 1)
+
+### Core Features 
+* **CRUD:** Full support for Movies.
+* **Architecture:** Clear separation between Controller -> Service -> Repository.
+* **DTO Pattern:** Separate DTOs for Create, Update, and View actions.
+* **Validation:** Bean Validation (Jakarta) used in both Entities and DTOs.
+* **Custom Error Handling:** Implements `ResourceNotFoundException` and `@ControllerAdvice`.
+
+### Advanced Features
+* **Search/Filter:** Search functionality implemented via Repository queries.
+* **Pagination:** Server-side pagination using `Pageable` and `Page`.
+* **Database Migrations:** Flyway used for schema versioning.
+
+### Testing
+* **Service Tests:** Unit tests for business logic.
+* **Mapper Tests:** Unit tests for Entity-DTO conversion.
+* **Web Tests:** `MockMvc` tests for controllers and view resolution.
+
 ## 🚀 Features
 
 * **Movie Management (CRUD):** Full support for Creating, Reading, Updating, and Deleting movies.
