@@ -10,6 +10,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: moviedb
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v4
 
@@ -22,6 +39,12 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
+        env:
+
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/moviedb
+          SPRING_DATASOURCE_USERNAME: user
+          SPRING_DATASOURCE_PASSWORD: password
+          SPRING_FLYWAY_CLEAN_DISABLED: false
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
