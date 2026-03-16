@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+<head>
+    <title th:text="${movie.title}">Filmdetaljer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        h1, h5 {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.5px;
+        }
+        .movie-title {
+            text-transform: lowercase;
+            font-weight: 800;
+        }
+        .detail-label {
+            color: #6c757d; /* Grå färg för etiketter */
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .info-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+
+<div class="container py-5">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/movies" class="text-info text-decoration-none">Filmer</a></li>
+            <li class="breadcrumb-item active text-secondary" aria-current="page" th:text="${movie.title}">Titel</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-7">
+
+            <div class="card shadow-lg border-secondary bg-dark overflow-hidden">
+                <div class="card-header border-secondary py-4 bg-secondary bg-opacity-10 text-center">
+                    <h1 class="display-5 movie-title text-info mb-0" th:text="${movie.title}">Filmtitel</h1>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <div class="row text-center mb-5">
+                        <div class="col-4">
+                            <div class="detail-label mb-1">Regissör</div>
+                            <div class="fw-bold text-light" th:text="${movie.director}">Nolan</div>
+                        </div>
+                        <div class="col-4 border-start border-secondary border-end">
+                            <div class="detail-label mb-1">Släppt</div>
+                            <div class="fw-bold text-light" th:text="${#temporals.format(movie.releaseDate, 'yyyy')}">2023</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="detail-label mb-1">Längd</div>
+                            <div class="fw-bold text-light">
+                                <i class="bi bi-clock me-1"></i>
+                                <span th:text="${movie.durationMinutes} + ' min'">120 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h5 class="text-secondary mb-3"><i class="bi bi-chat-left-text me-2"></i>Beskrivning</h5>
+                        <p class="lead" style="white-space: pre-line; line-height: 1.8; font-size: 1.1rem;" th:text="${movie.description}">
+                            Här visas filmens handling...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-footer border-secondary bg-transparent py-4 d-flex justify-content-between">
+                    <a href="/movies" class="btn btn-outline-light px-4">
+                        <i class="bi bi-arrow-left me-2"></i>Tillbaka
+                    </a>
+                    <div>
+                        <a th:href="@{/movies/{id}/edit(id=${movie.id})}" class="btn btn-warning px-4 fw-bold">
+                            <i class="bi bi-pencil me-2"></i>Redigera
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

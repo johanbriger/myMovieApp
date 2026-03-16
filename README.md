@@ -69,7 +69,7 @@ Open your browser and go to:
 
 ## 🍿 Sample Data & Migrations
 * **Flyway:** On startup, Flyway automatically runs all migration scripts found in `src/main/resources/db/migration` to set up your tables.
-* **DataInitializer:** The application is pre-configured with a `DataInitializer` that populates the database with sample movies (Inception, The Matrix, Interstellar) if the database is empty.
+* **DataInitializer:** The application is pre-configured with a `DataInitializer` that populates the database with sample movies if the database is empty.
 
 ## 🧪 Testing
 The project includes REST controller testing using `@WebMvcTest` and `MockMvc`.

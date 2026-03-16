@@ -1,47 +1,110 @@
-DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
 <head>
-    <title>Ny Film</title>
+    <title>Uppdatera Film</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -1px;
+            text-transform: lowercase;
+        }
+        .form-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6c757d;
+            font-weight: 700;
+        }
+        .card {
+            border-radius: 15px;
+            border: 1px solid rgba(255, 193, 7, 0.2); /* Subtil guld-kant */
+        }
+        .form-control, .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+    </style>
 </head>
-<body class="container mt-4">
-<h1>Lägg till ny film</h1>
+<body class="bg-dark text-light">
 
-<form th:action="@{/movies/{id}(id=${id})}" th:object="${movieForm}" method="post">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
 
-    <div class="mb-3">
-        <label>Titel</label>
-        <input type="text" th:field="*{title}" class="form-control"
-               th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'">
-        <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Fel</div>
+            <div class="text-center mb-4">
+                <h1 class="display-5 text-warning">edit<span class="text-white">Movie</span></h1>
+                <p class="text-secondary">Uppdatera informationen för <strong class="text-light" th:text="${movieForm.title}">Film</strong></p>
+            </div>
+
+            <div class="card shadow-lg border-secondary bg-dark">
+                <div class="card-body p-4 p-md-5">
+
+                    <form th:action="@{/movies/{id}(id=${id})}" th:object="${movieForm}" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">Titel</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-secondary text-secondary"><i class="bi bi-pencil-square"></i></span>
+                                <input type="text" th:field="*{title}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Fel</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Regissör</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-secondary text-secondary"><i class="bi bi-person-badge"></i></span>
+                                <input type="text" th:field="*{director}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('director')} ? 'is-invalid'">
+                                <div class="invalid-feedback" th:errors="*{director}"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Utgivningsdatum</label>
+                                <input type="date" th:field="*{releaseDate}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('releaseDate')} ? 'is-invalid'">
+                                <div class="invalid-feedback" th:errors="*{releaseDate}"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Längd (min)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-transparent border-secondary text-secondary"><i class="bi bi-clock-history"></i></span>
+                                    <input type="number" th:field="*{durationMinutes}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Beskrivning</label>
+                            <textarea th:field="*{description}" class="form-control" rows="5"></textarea>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning btn-lg fw-bold shadow text-dark">
+                                <i class="bi bi-arrow-repeat me-2"></i>Uppdatera film
+                            </button>
+                            <a href="/movies" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle me-2"></i>Avbryt
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label>Regissör</label>
-        <input type="text" th:field="*{director}" class="form-control"
-               th:classappend="${#fields.hasErrors('director')} ? 'is-invalid'">
-        <div class="invalid-feedback" th:errors="*{director}"></div>
-    </div>
-
-    <div class="mb-3">
-        <label>Utgivningsdatum</label>
-        <input type="date" th:field="*{releaseDate}" class="form-control"
-               th:classappend="${#fields.hasErrors('releaseDate')} ? 'is-invalid'">
-        <div class="invalid-feedback" th:errors="*{releaseDate}"></div>
-    </div>
-
-    <div class="mb-3">
-        <label>Längd (min)</label>
-        <input type="number" th:field="*{durationMinutes}" class="form-control">
-    </div>
-
-    <div class="mb-3">
-        <label>Beskrivning</label>
-        <textarea th:field="*{description}" class="form-control"></textarea>
-    </div>
-
-    <button type="submit" class="btn btn-success">Spara</button>
-    <a href="/movies" class="btn btn-secondary">Avbryt</a>
-</form>
 </body>
 </html>

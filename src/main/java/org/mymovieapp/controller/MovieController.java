@@ -39,6 +39,7 @@ public class MovieController {
         return "movie/list";
     }
 
+
     @GetMapping("/new")
     public String showCreateForm(Model model) {
         model.addAttribute("movieForm", new CreateMovieDTO());
@@ -87,6 +88,13 @@ public class MovieController {
     public String deleteMovie(@PathVariable Long id) {
         service.delete(id);
         return "redirect:/movies";
+    }
+
+    @GetMapping("/{id}")
+    public String showMovieDetails(@PathVariable Long id, Model model) {
+        MovieDTO movie = service.findById(id);
+        model.addAttribute("movie", movie);
+        return "movie/details";
     }
 }
 
