@@ -2,7 +2,6 @@ package org.mymovieapp.dto;
 
 import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 
 

@@ -25,10 +25,9 @@ class MovieControllerTest {
 
     @Test
     void listMovies_ShouldReturnListView() throws Exception {
-        // Arrange - Vi simulerar att servicen returnerar en tom sida
+
         when(service.findAll(any(), any())).thenReturn(Page.empty());
 
-        // Act & Assert
         mockMvc.perform(get("/movies"))
                 .andExpect(status().isOk()) // Verifiera HTTP 200
                 .andExpect(view().name("movie/list")) // Verifiera att rätt HTML-vy returneras

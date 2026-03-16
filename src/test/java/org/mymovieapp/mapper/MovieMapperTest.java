@@ -32,13 +32,11 @@ class MovieMapperTest {
 
     @Test
     void shouldMapEntityToDTO() {
-        // Arrange
+
         Movie movie = new Movie(1L, "The Matrix", "Cool movie", LocalDate.now(), "Wachowski", 136);
 
-        // Act
         MovieDTO dto = mapper.toDTO(movie);
 
-        // Assert
         assertEquals(movie.getId(), dto.getId());
         assertEquals(movie.getTitle(), dto.getTitle());
     }

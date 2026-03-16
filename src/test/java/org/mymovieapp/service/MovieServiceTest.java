@@ -20,7 +20,7 @@ class MovieServiceTest {
     @Mock
     private MovieRepository repository;
 
-    @Spy // Vi använder en riktig mapper men injicerar den i servicen
+    @Spy
     private MovieMapper mapper;
 
     @InjectMocks
@@ -28,16 +28,14 @@ class MovieServiceTest {
 
     @Test
     void findById_ShouldReturnMovie_WhenMovieExists() {
-        // Arrange
+
         Movie movie = new Movie();
         movie.setId(1L);
         movie.setTitle("Test Movie");
         when(repository.findById(1L)).thenReturn(Optional.of(movie));
 
-        // Act
         var result = service.findById(1L);
 
-        // Assert
         assertNotNull(result);
         assertEquals("Test Movie", result.getTitle());
         verify(repository, times(1)).findById(1L);
@@ -45,10 +43,9 @@ class MovieServiceTest {
 
     @Test
     void findById_ShouldThrowException_WhenMovieDoesNotExist() {
-        // Arrange
+
         when(repository.findById(99L)).thenReturn(Optional.empty());
 
-        // Act & Assert
         assertThrows(ResourceNotFoundException.class, () -> service.findById(99L));
     }
 }
