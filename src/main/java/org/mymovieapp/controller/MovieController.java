@@ -1,6 +1,5 @@
 package org.mymovieapp.controller;
 
-
 import org.mymovieapp.dto.*;
 import org.mymovieapp.service.MovieService;
 import jakarta.validation.Valid;
@@ -60,15 +59,8 @@ public class MovieController {
     public String showUpdateForm(@PathVariable Long id, Model model) {
         MovieDTO existing = service.findById(id);
 
-        UpdateMovieDTO formDto = new UpdateMovieDTO();
-        formDto.setTitle(existing.getTitle());
-        formDto.setDescription(existing.getDescription());
-        formDto.setDirector(existing.getDirector());
-        formDto.setReleaseDate(existing.getReleaseDate());
-        formDto.setDurationMinutes(existing.getDurationMinutes());
-
-        model.addAttribute("movieForm", formDto);
-        model.addAttribute("id", id); // Behövs för action-url
+        model.addAttribute("movieForm", UpdateMovieDTO.from(existing));
+        model.addAttribute("id", id);
         return "movie/edit";
     }
 

@@ -32,6 +32,16 @@ public class UpdateMovieDTO {
         this.durationMinutes = durationMinutes;
     }
 
+    public static UpdateMovieDTO from(MovieDTO existing){
+        return new UpdateMovieDTO(
+                existing.getTitle(),
+                existing.getDescription(),
+                existing.getReleaseDate(),
+                existing.getDirector(),
+                existing.getDurationMinutes()
+        );
+    }
+
     public String getTitle() {
         return title;
     }
