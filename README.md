@@ -30,6 +30,7 @@ A robust web application for managing a movie library, developed as a student as
 * **Java:** 25
 * **Framework:** Spring Boot 4.0.3
 * **Web:** Spring MVC & Thymeleaf (Template Engine)
+* **Frontend UI:** **Bootstrap 5**
 * **Data:** Spring Data JPA & Flyway
 * **Database:** **PostgreSQL 15 (via Docker)**
 * **Tools:** Maven, Docker, Mockito
